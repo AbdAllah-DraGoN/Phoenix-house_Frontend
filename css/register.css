@@ -1,0 +1,92 @@
+/* For hide Arrows From Number Input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+section.register .section-title {
+  color: var(--text-second-coler);
+}
+
+section.register .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 3.33rem;
+}
+section.register .container .register-form {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: space-between;
+}
+section.register .container .register-form input,
+section.register .container .register-form button {
+  width: 26.66rem;
+  height: 3.33rem;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  background-color: var(--black-color-1);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--box-main-coler);
+  box-shadow: -0.33rem 0.4rem 0 var(--box-second-coler);
+  margin-bottom: 1rem;
+}
+section.register .container .register-form .submit {
+  width: 13.33rem;
+  border-radius: 1rem;
+  font-weight: 900;
+  margin: 0 auto;
+  background-image: var(--gradient-gold);
+  color: var(--text-main-coler);
+  box-shadow: -0.33rem 0.4rem 0 var(--black-color-2);
+  cursor: pointer;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  border: none;
+}
+section.register .container .register-form .submit:hover {
+  transform: translate(-0.2rem, 0.266rem);
+  box-shadow: -0.133rem 0.133rem var(--black-color-2) !important;
+}
+
+/* Medai */
+@media (max-width: 550px) {
+  .section-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem;
+    left: 0;
+    transform: none;
+  }
+  section.register .container .register-form {
+    width: 100%;
+    align-items: center;
+    height: 85%;
+    justify-content: space-evenly;
+  }
+  section.register .container .register-form input {
+    width: 90%;
+    height: 5.5rem;
+    padding: 0px 2rem;
+    border-radius: 3rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  section.register .container .register-form .submit {
+    height: fit-content;
+    padding: 0.5rem;
+    width: 40%;
+    border-radius: 4rem;
+    font-size: 3rem;
+    margin: 3rem auto;
+    background-image: none;
+    color: var(--text-second-coler);
+    box-shadow: -0.33rem 0.4rem 0 var(--box-second-coler);
+  }
+  section.register .container .register-form .submit:hover {
+    box-shadow: -0.133rem 0.133rem var(--box-second-coler) !important;
+  }
+}

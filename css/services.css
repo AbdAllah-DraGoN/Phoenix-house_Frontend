@@ -1,0 +1,86 @@
+.services .s-title-icon {
+  font-size: 3.5rem;
+  padding: 1rem 0 0;
+}
+.services .logo-back {
+  position: fixed;
+  max-width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  max-height: 80%;
+  z-index: -2;
+}
+.services .bttn {
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
+  width: 14rem;
+  height: 3.5rem;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-align: center;
+  border-radius: 1.2rem;
+  color: var(--text-main-coler);
+  background-image: var(--gradient-gold);
+  box-shadow: -0.2rem 0.4rem 0px var(--text-main-coler);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.services .bttn:hover {
+  transform: translate(-0.1rem, 0.3rem);
+  box-shadow: -0.1rem 0.1rem 0 var(--text-main-coler) !important;
+}
+/* Start */
+.services .container {
+  margin-top: 6rem;
+  margin-bottom: 8rem;
+}
+.services .container ul {
+  list-style: initial;
+}
+
+.services .container div {
+  margin: 0 3rem;
+}
+.services .container h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 1rem;
+}
+.services .container .plus h3 {
+  margin: 10rem -2rem 1rem 0;
+}
+.services .container ul li {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 2.3;
+  color: var(--text-main-coler);
+}
+.services .container .plus ul li {
+  margin: 1rem 2rem 0 0;
+}
+.services .container ul ol li {
+  margin-right: 2rem;
+  font-size: 1.2rem;
+}
+
+/* Media */
+@media (max-width: 550px) {
+  .services .container ul li {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .services .container ul ol li {
+    margin-right: 2rem;
+    font-size: 1.4rem;
+  }
+  .services .bttn {
+    width: 18rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    border-radius: 3rem;
+  }
+}

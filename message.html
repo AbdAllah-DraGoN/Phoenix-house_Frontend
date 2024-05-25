@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مراسلة</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/message.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- 
+    ======================
+    -->
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====================================== -->
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="msg-page">
+      <img
+        src="images/Backgrounds/tall-background.png"
+        alt=""
+        class="back-tall"
+      />
+      <img src="images/Backgrounds/mobile-back.png" class="mobile-back" />
+      <div class="container">
+        <img src="images/logo/msg-logo.png" alt="" class="msg-logo-title" />
+        <div class="msg-box">
+          <span id="overBox" style="display: none" class="propertyId"
+            >تم تضمين طلبك فى هذه الرسالة
+          </span>
+          <input
+            type="text"
+            id="msgContent"
+            class="msg"
+            placeholder="الرسالة"
+          />
+          <span class="submit">
+            <button class="grdn-txt-gold" onclick="sendBtnClicked()">
+              إرسال
+            </button>
+          </span>
+        </div>
+      </div>
+    </section>
+    <script src="./js/main.js"></script>
+    <script src="./js/message.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>

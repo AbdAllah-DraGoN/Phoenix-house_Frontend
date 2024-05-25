@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إعرض</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/add.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- 
+    ======================
+    -->
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====================================== -->
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-title">
+      إعرض<i class="fas fa-book-open s-title-icon"></i>
+    </div>
+    <!-- Start content -->
+    <div class="show-content">
+      <img src="./images/Backgrounds/Buildings.png" alt="" class="buildings" />
+      <img src="./images/Backgrounds/back-groun.png" alt="" class="back-G" />
+      <img src="images/Backgrounds/mobile-back.png" class="mobile-back" />
+      <div class="container">
+        <form class="add" id="createProp">
+          <img src="images/Backgrounds/Cell-Home.png" alt="" />
+          <select name="الغرض" id="purpose" class="sm-box" required>
+            <option
+              value=""
+              selected
+              disabled
+              class="select-label"
+              style="display: none"
+            >
+              الغرض
+            </option>
+            <option>بيع</option>
+            <option>إيجار</option>
+          </select>
+          <select name="القسم" id="categoryId" class="sm-box" required>
+            <option value="" disabled selected style="display: none">
+              القسم
+            </option>
+          </select>
+          <input
+            type="text"
+            class="sm-box"
+            id="subject"
+            required
+            placeholder="الموضوع"
+          />
+          <input
+            type="number"
+            id="area"
+            class="sm-box"
+            required
+            placeholder="المساحة بالمتر"
+          />
+          <input
+            type="number"
+            class="sm-box"
+            id="rooms_number"
+            required
+            placeholder="عدد الغرف"
+          />
+          <input
+            type="number"
+            class="sm-box"
+            id="bathrooms_number"
+            required
+            placeholder="عدد الحمامات"
+          />
+          <input
+            type="number"
+            class="sm-box"
+            id="floor_number"
+            required
+            placeholder="الدور"
+          />
+          <select name="التشطيب" id="finishing" class="sm-box" required>
+            <option
+              value=""
+              selected
+              disabled
+              class="select-label"
+              style="display: none"
+            >
+              التشطيب
+            </option>
+            <option>طوب أحمر</option>
+            <option>نصف تشطيب</option>
+            <option>لوكس</option>
+            <option>سوبر لوكس</option>
+            <option>هاي سوبر لوكس</option>
+          </select>
+          <select name="الفرش" id="furnished" class="sm-box" required>
+            <option value="" disabled selected style="display: none">
+              الفرش
+            </option>
+            <option value="true">مفروش</option>
+            <option value="false">غير مفروش</option>
+          </select>
+          <input
+            type="text"
+            id="description"
+            class="sm-box"
+            required
+            placeholder="وصف دقيق"
+          /><select name="المحافظة" id="governorateId" class="sm-box" required>
+            <option
+              value=""
+              selected
+              disabled
+              class="select-label"
+              style="display: none"
+            >
+              المحافظة
+            </option>
+          </select>
+          <select name="المنطقة" id="districtId" class="sm-box" required>
+            <option
+              value=""
+              selected
+              disabled
+              class="select-label"
+              style="display: none"
+            >
+              المنطقة
+            </option>
+          </select>
+          <input
+            type="text"
+            id="location"
+            class="sm-box"
+            required
+            placeholder="الموقع بالتفصيل"
+          />
+          <select name="" id="financing" class="sm-box" required>
+            <option value="" disabled selected style="display: none">
+              إمكانية التمويل
+            </option>
+            <option value="true">قابل للتمويل العقارى</option>
+            <option value="false">غير قابل للتمويل العقارى</option>
+          </select>
+          <input
+            type="number"
+            id="meter_price"
+            class="sm-box"
+            required
+            placeholder="سعر المتر بالجنية"
+          />
+          <input
+            type="number"
+            class="sm-box"
+            id="price"
+            required
+            placeholder="إجمالى السعر بالجنية"
+          />
+          <span style="cursor: pointer">
+            <label
+              for="images"
+              style="font-size: 1.3rem; padding: 0.7rem 0; cursor: pointer"
+            >
+              صور توضيحية
+              <i class="fa-solid fa-camera icon"></i>
+            </label>
+
+            <input
+              id="images"
+              name="images"
+              type="file"
+              class="file"
+              multiple
+              style="display: none"
+              maxlength="12"
+            />
+          </span>
+          <select name="" id="payment_type" class="sm-box" required>
+            <option value="" disabled selected style="display: none">
+              طريقة الدفع
+            </option>
+            <option>كاش</option>
+            <option>تقسيط</option>
+          </select>
+          <select name="" id="advertiser_type" class="sm-box" required>
+            <option value="" disabled selected style="display: none">
+              نوع المعلن
+            </option>
+            <option>مالك</option>
+            <option>سمسار</option>
+            <option>فريق عمل</option>
+          </select>
+          <input
+            id="code"
+            disabled
+            style="opacity: 0.8"
+            type="text"
+            class="sm-box"
+            placeholder="كود فريق العمل"
+          />
+          <input type="reset" class="reset" value="حذف التحديدات" />
+          <span class="add-btn">
+            <button
+              class="grdn-txt-gold"
+              onclick="addPropClicked()"
+              id="submitBtn"
+            >
+              ضيف عقارك
+            </button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <!-- End content -->
+    <script src="./js/main.js"></script>
+    <script src="./js/addProperty.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>

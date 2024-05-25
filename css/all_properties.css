@@ -1,0 +1,190 @@
+/* Start Show Section */
+
+.show .container .cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.show .container .cards .card {
+  width: 21rem;
+  height: 32rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.8rem 0.5rem;
+  border-radius: 1rem;
+  background: #1a1a1a;
+  color: var(--text-main-coler);
+  margin: 1rem;
+}
+.show .container .cards .card img {
+  width: 100%;
+  height: 40%;
+  border: 0.066rem solid #fff;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.show .container .cards .card .details {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.show .container .cards .card .details > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.show .container .cards .card .details span {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem;
+  background-color: var(--box-second-coler);
+  border-radius: 0.66rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0.3rem;
+}
+.show .container .cards .card .details span.lg {
+  width: 85%;
+  height: 12%;
+}
+.show .container .cards .card .details span.sm {
+  width: 15%;
+  height: 12%;
+}
+.show .container .cards .card .details span.si-sm {
+  width: 20%;
+  height: 12%;
+  flex: 1;
+}
+.show .container .cards .card .details span.bttn {
+  width: 7rem;
+  height: 2.8rem;
+  border-radius: 2rem;
+  background-image: var(--gradient-gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 0px var(--black-color-2);
+}
+
+span.bttn:hover {
+  transform: translate(0, 0.4rem);
+  box-shadow: 0 0.1rem 0px var(--black-color-2) !important;
+}
+
+.show .container .cards .card .details svg,
+.show .container .cards .card .details i {
+  font-size: 1.6rem;
+  color: var(--box-main-coler);
+}
+.show .container .cards .card .details .lg-icon {
+  font-size: 3rem;
+  color: var(--box-main-coler);
+}
+/* .show .container .cards .card .details .lg-icon-v {
+  display: none;
+}
+.show .container .cards .card .details .hrt-icon:hover .lg-icon {
+  display: none;
+}
+.show .container .cards .card .details .hrt-icon:hover .lg-icon-v {
+  display: block;
+  font-size: 3rem;
+  color: var(--text-second-coler);
+  cursor: pointer;
+} */
+/* Media */
+@media (max-width: 550px) {
+  .mobile-back {
+    position: fixed;
+  }
+  .show .container .cards {
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+  }
+  .show .container .cards .card {
+    width: 70%;
+    height: 70vh;
+    padding: 2rem 1.2rem;
+    border-radius: 2.5rem;
+    margin: 10vh auto;
+  }
+  .show .container .cards .card img {
+    width: 100%;
+    height: 40%;
+    border: 0.3rem solid #fff;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .show .container .cards .card .details span {
+    font-size: 2rem;
+    border-radius: 2rem;
+  }
+  .show .container .cards .card .details i,
+  .show .container .cards .card .details svg {
+    font-size: 2.5rem;
+  }
+  .show .container .cards .card .details span.lg {
+    width: 85%;
+    height: 13%;
+  }
+  .show .container .cards .card .details span.si-sm {
+    width: 16%;
+    height: 12%;
+  }
+  /* .show .container .card .hrt-icon .lg-icon-v, */
+  .show .container .card .hrt-icon .lg-icon {
+    font-size: 4.5rem;
+  }
+  .show .container .cards .card .details span.bttn {
+    width: 35%;
+    height: 17%;
+    border-radius: 4rem;
+    font-size: 2.5rem;
+  }
+  .show .container .cards .card .details .lg-icon {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .show .container .cards .card {
+    width: 80%;
+    height: 63vh;
+  }
+}
+
+@media (max-width: 350px) {
+  .show .container .cards .card .details svg {
+    font-size: 2.2rem;
+  }
+}
+
+/*
+  big icon 
+    width: 50px;
+    height: 50px;
+-------------
+  small icon 
+    width: 22px;
+    height: 28px;
+  ------------
+  image counter 
+    width: 78px;
+    height: 42px;
+    --- image counter icon
+      width: 16.5px;
+      height: 14px;
+*/

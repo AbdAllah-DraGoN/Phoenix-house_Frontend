@@ -1,0 +1,207 @@
+/* Start Home Page */
+section {
+  padding: 1.6rem 0;
+}
+section .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+section .container .content {
+  width: 58%;
+  height: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+}
+section .content h1 {
+  text-align: center;
+  width: 100%;
+  font-size: 5.33rem;
+  font-weight: 900;
+  font-family: "Lalezar", system-ui;
+}
+section .content p {
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.6;
+  padding-bottom: 1.33rem;
+  text-wrap: nowrap;
+}
+section .content .btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 2rem;
+}
+section .content .btns .bttn {
+  width: 10rem;
+  height: 3.5rem;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-align: center;
+  border-radius: 2.66rem;
+  background-image: var(--gradient-gold);
+  box-shadow: 0 0.66rem 0px var(--text-main-coler);
+  color: var(--text-main-coler);
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.building-logo {
+  display: none;
+}
+
+.win-msg-logo {
+  height: 5rem;
+  width: 4.8rem;
+  margin: 1.33rem;
+  cursor: pointer;
+}
+.win-msg-logo:hover {
+  transform: translate(0, 0.33rem);
+}
+section .content .btns .bttn:hover {
+  transform: translate(0, 0.5rem);
+  box-shadow: 0 0.2rem 0px var(--text-main-coler) !important;
+}
+
+.bttn-small {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  top: 5rem;
+  font-weight: 900;
+  text-align: center;
+  border-radius: 3rem;
+  color: var(--text-main-coler);
+  background-image: var(--gradient-gold);
+  box-shadow: 0 0.33rem 0px var(--text-main-coler);
+  cursor: pointer;
+}
+.bttn-small:hover {
+  transform: translate(0, 0.2rem);
+  box-shadow: 0 0.13rem 0px var(--text-main-coler) !important;
+}
+/* End Home Page */
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  /* height: 7rem; */
+}
+footer hr {
+  height: 0.4rem;
+  display: block;
+  background-color: var(--text-main-coler);
+  opacity: 1;
+  border-radius: 1rem;
+}
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin: 0;
+}
+footer ul li {
+  font-size: 2.2rem;
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+footer ul a {
+  display: flex;
+  color: var(--text-main-coler);
+}
+.win-so-icons .so-ico {
+  opacity: 70%;
+}
+/* footer ul li.win-rating {
+  justify-content: center;
+} */
+footer ul li .so-ico,
+footer ul li .str-ico {
+  cursor: pointer;
+}
+/*  */
+
+/*  */
+@media (max-width: 550px) {
+  section .container .content {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+  }
+  section .content p {
+    font-size: 1.7rem;
+  }
+  section .content .btns .bttn {
+    font-size: 1.9rem;
+    border-radius: 1.7rem;
+  }
+  .building-logo {
+    display: inline-block;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  footer {
+    display: none;
+  }
+}
+@media (max-width: 430px) {
+  section .content p {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 360px) {
+  section .content p {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1700px) {
+  :root {
+    font-size: 24px !important;
+  }
+}
+/* ========================= */
+#adminPages {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  bottom: 1.5rem;
+  border-radius: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+}
+#adminPages a {
+  padding: 0.5rem 1rem;
+  background: var(--black-color-1);
+  border-radius: 1rem;
+  color: #fff;
+  font-weight: 500;
+  margin: 0.5rem;
+  text-wrap: nowrap;
+}
+@media (max-width: 550px) {
+  #adminPages {
+    top: 80%;
+    font-size: 1.7rem;
+  }
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>المستخدمين</title>
+    <!-- External JS files -->
+    <script src="../files/axios/axios.min.js"></script>
+    <script src="../files/bootstrap/bootstrap.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="../files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="../files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lalezar Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      h5,
+      h6 {
+        margin: 0;
+      }
+      #history-back-btn {
+        position: fixed;
+        left: 2rem;
+        top: 2rem;
+        font-size: 3rem;
+        z-index: 999;
+        cursor: pointer;
+      }
+      .page-head {
+        margin: 1rem auto;
+        width: fit-content;
+        font-size: 2.5rem;
+        font-weight: 900;
+        padding: 1rem 3rem;
+        border-radius: 3rem;
+      }
+      .users-count {
+        position: absolute;
+        top: 2rem;
+        right: 4rem;
+        width: fit-content;
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: #000;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- Back Btn -->
+    <span id="history-back-btn" title="الرجوع الى الخلف" onclick="goBackBtn()">
+      <i class="fa-solid fa-circle-chevron-up fa-rotate-270"></i>
+    </span>
+    <!-- 
+    ======================
+    -->
+    <!-- Dlete User Modal-->
+    <div
+      class="modal fade"
+      id="delete-user-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من أنك تريد حذف المستخدم</h5>
+            <input type="hidden" id="user-id-input1" />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="delete-user-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmDeleteUser();"
+            >
+              تاكيد الحذف
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 
+      ======================
+    -->
+    <!-- Change Role Modal-->
+    <div
+      class="modal fade"
+      id="change-user-role-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تغيير صلاحيات مستخدم</h5>
+            <input type="hidden" id="user-id-input2" />
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="change-user-role-type"
+              >
+                <option selected>user</option>
+                <option>admin</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="change-user-role-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmUserRole();"
+            >
+              تاكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 
+      ======================
+    -->
+    <div class="page-head">المستخدمين <i class="fa-solid fa-user"></i></div>
+    <!-- Start NavBar -->
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img
+      src="../images/Backgrounds/logo-back.png"
+      style="
+        max-width: 80%;
+        max-height: 80%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        opacity: 0.9;
+      "
+    />
+    <div class="d-flex justify-content-center my-3">
+      <div class="users-count">
+        <div id="users-count" style="margin: 0 1rem; line-height: 0">0</div>
+        <i class="fa-solid fa-user" style="font-size: 2.5rem"></i>
+      </div>
+      <div
+        id="usersContaner"
+        class="col-10 d-flex flex-wrap justify-content-center"
+        style="min-height: 60vh; align-content: flex-start; margin-top: 6rem"
+      ></div>
+    </div>
+    <script src="../js/main.js"></script>
+    <script src="./js/getAllUsers.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="../files/font_awesome/all.min.js"></script>
+  </body>
+</html>

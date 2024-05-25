@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phoenix House</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lalezar Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- 
+    ======================
+    -->
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====================================== -->
+    <div class="container">
+      <div id="adminPages" style="display: none">
+        <a href="./adminRoutes/getAllMsgs.html">الرسائل</a>
+        <a href="./adminRoutes/getAllUsers.html">المستخدمين</a>
+        <a href="./adminRoutes/settings.html">الإعدادات</a>
+        <a href="./adminRoutes/waitingList.html"
+          >الإنتظار
+          <span
+            id="waitingCount"
+            style="
+              background: #f00;
+              padding: 0 0.7rem;
+              margin: 0;
+              border-radius: 2rem;
+              display: none;
+            "
+          ></span>
+        </a>
+      </div>
+    </div>
+    <!-- Start Section -->
+    <section class="main">
+      <img src="./images/Backgrounds/Buildings.png" alt="" class="buildings" />
+      <img src="./images/Backgrounds/back-groun.png" alt="" class="back-G" />
+      <img src="./images/Backgrounds/mobile-back.png" class="mobile-back" />
+      <div class="container">
+        <div class="content">
+          <h1 class="grdn-txt-gold">أهلا بيك..</h1>
+          <p>
+            شركتنا بتقدملك أفضل خدمة فى البحث عن عقارك المناسب <br />
+            بنقدملك كمان خدمة إستخراج التراخيص بأقل سعر ممكن
+          </p>
+          <div class="btns" style="position: relative">
+            <a class="bttn" href="./search.html"
+              >إبحث <i class="fas fa-search btn-ico"></i
+            ></a>
+            <a href="./all_properties.html" class="bttn-small">
+              العقارات المتاحة
+            </a>
+            <a class="bttn" id="toAddPropBtn"
+              >إعرض<i class="fas fa-book-open btn-ico"></i
+            ></a>
+          </div>
+        </div>
+        <img
+          src="./images/Backgrounds/Buildings.png"
+          alt=""
+          class="building-logo"
+        />
+        <a id="btnToMsgPage2" style="width: fit-content">
+          <img src="./images/logo/msg-logo.png" alt="" class="win-msg-logo" />
+        </a>
+        <footer>
+          <hr />
+          <ul>
+            <li class="win-so-icons">
+              <a id="home-youtube-link" target="_blank">
+                <i class="fa-brands fa-youtube so-ico"></i>
+              </a>
+              <a id="home-tiktok-link" target="_blank">
+                <i class="fa-brands fa-tiktok so-ico"></i>
+              </a>
+              <a id="home-insta-link" target="_blank">
+                <i class="fa-brands fa-instagram so-ico"></i>
+              </a>
+              <a id="home-face-link" target="_blank">
+                <i class="fa-brands fa-facebook-f so-ico"></i>
+              </a>
+            </li>
+            <li class="win-rating">
+              <form action="" class="stars">
+                <!-- <input type="submit" value="إرسال" /> -->
+                <input
+                  type="radio"
+                  name="str"
+                  value="5"
+                  id="str5"
+                  class="star5"
+                  onclick="ratingClicked(value)"
+                />
+                <label for="str5">
+                  <i class="fa-regular fa-star str-ico no"></i>
+                  <i class="fa-solid fa-star str-ico yes"></i>
+                </label>
+
+                <input
+                  type="radio"
+                  name="str"
+                  value="4"
+                  id="str4"
+                  class="star4"
+                  onclick="ratingClicked(value)"
+                />
+                <label for="str4">
+                  <i class="fa-regular fa-star str-ico no"></i>
+                  <i class="fa-solid fa-star str-ico yes"></i>
+                </label>
+
+                <input
+                  type="radio"
+                  name="str"
+                  value="3"
+                  id="str3"
+                  class="star3"
+                  onclick="ratingClicked(value)"
+                />
+                <label for="str3">
+                  <i class="fa-regular fa-star str-ico no"></i>
+                  <i class="fa-solid fa-star str-ico yes"></i>
+                </label>
+
+                <input
+                  type="radio"
+                  name="str"
+                  value="2"
+                  id="str2"
+                  class="star2"
+                  onclick="ratingClicked(value)"
+                />
+                <label for="str2">
+                  <i class="fa-regular fa-star str-ico no"></i>
+                  <i class="fa-solid fa-star str-ico yes"></i>
+                </label>
+
+                <input
+                  type="radio"
+                  name="str"
+                  value="1"
+                  id="str1"
+                  class="star1"
+                  onclick="ratingClicked(value)"
+                />
+                <label for="str1">
+                  <i class="fa-regular fa-star str-ico no"></i>
+                  <i class="fa-solid fa-star str-ico yes"></i>
+                </label>
+              </form>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </section>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/homePage.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>

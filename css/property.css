@@ -1,0 +1,191 @@
+.property {
+  height: fit-content;
+  padding: 1rem 0;
+}
+.property .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.property .container .head {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.property .container .head .img-container {
+  width: 35rem;
+  margin-bottom: 1.86rem;
+  text-align: center;
+  font-size: 2.5rem;
+}
+.property .container .head .box {
+  width: 46%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.property .container .head .box > span,
+.property .container .land > span {
+  height: fit-content;
+  background: var(--gradient-black);
+  border-radius: 1rem;
+  margin-bottom: 1.86rem;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--box-main-coler);
+  box-shadow: -0.4rem 0.4rem 0 var(--box-second-coler);
+}
+.property .container span.sm {
+  width: 14.66rem;
+}
+.property .container span.lg {
+  width: 100%;
+}
+
+.property .container .land {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.property .container .foot {
+  display: flex;
+  justify-content: space-around;
+}
+.property .container .foot .bttn {
+  width: fit-content;
+  height: fit-content;
+  border-radius: 1.3rem;
+  background-image: var(--gradient-gold);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -0.25rem 0.5rem 0px var(--black-color-2);
+  padding: 0.3rem 4rem;
+}
+.property .container .foot .bttn:hover {
+  transform: translate(-0.2rem, 0.4rem);
+  box-shadow: -0.05rem 0.1rem var(--black-color-2) !important;
+}
+.property .container .foot .icon {
+  font-size: 3.66rem;
+  height: 4.66rem;
+  display: flex;
+  justify-content: center;
+  width: 4.66rem;
+  padding: 0.66rem;
+  color: var(--text-main-coler);
+}
+.property .container .foot .icon .lg-icon-v {
+  display: none;
+}
+.property .container .foot .icon:hover .lg-icon {
+  display: none;
+}
+.property .container .foot .icon:hover .lg-icon-v {
+  display: block;
+  color: var(--text-second-coler);
+}
+/* Media */
+
+@media (max-width: 992px) {
+  .property .container span.sm {
+    width: 10rem;
+  }
+  .property .container .head .img-container {
+    width: 30rem;
+    height: 18rem;
+    margin: 0 1rem 1.86rem 0;
+  }
+  .property .container .head .box {
+    width: 45%;
+  }
+  .property .container .foot .bttn {
+    border-radius: 1.1rem;
+    font-size: 1.8rem;
+  }
+  .property .container .foot .icon {
+    font-size: 3.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .property .container .head .img-container {
+    width: 27rem;
+    height: 75%;
+  }
+  .property .container .foot .bttn {
+    border-radius: 1rem;
+    font-size: 1.6rem;
+  }
+  .property .container .foot .icon {
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 550px) {
+  .mobile-back {
+    position: fixed;
+  }
+}
+@media (max-width: 550px) {
+  .property {
+    height: fit-content;
+    padding: 1.5rem 0;
+  }
+  .property .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .property .container .head {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .property .container .head .img-container {
+    width: 100%;
+    height: fit-content;
+    margin: 1rem 0 3rem;
+    padding: 0.5rem;
+  }
+  .property .container .head .box {
+    width: 100%;
+  }
+  .property .container .land {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .property .container span.lg,
+  .property .container span.sm {
+    height: fit-content;
+    border-radius: 3rem !important;
+    margin-bottom: 3rem !important;
+    padding: 0.6rem 1.2rem !important;
+    font-size: 1.2rem !important;
+  }
+  .property .container span.sm {
+    width: 45%;
+  }
+  .property .container span.lg {
+    width: 100%;
+  }
+  .property .container .foot {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+  }
+  .property .container .foot .bttn {
+    border-radius: 2rem;
+    font-size: 2rem;
+    padding: 0.3rem 3rem;
+  }
+  .property .container .foot .icon {
+    font-size: 3.2rem;
+    color: var(--text-main-coler);
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إنتظار قبول الحساب</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/userWait.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Harlow Font -->
+    <link
+      href="https://fonts.cdnfonts.com/css/harlow-solid-italic"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------- -->
+    <img src="images/Backgrounds/waitingWin.jpg" class="waitingWin" />
+    <img src="images/Backgrounds/waitingPhone.jpg" class="waitingPhone" />
+    <section>
+      <div class="container">
+        <div class="content">
+          <h2 class="grdn-txt-gold">نورت</h2>
+          <p>هنتواصل معاك فى أقرب وقت <br />لتفعيل حسابك <span>❤</span></p>
+          <div>
+            <a href="./all_properties.html">إتفرج على المعروض</a>
+            <a href="./services.html">شوف خدماتنا</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Font Awesome JS file -->
+    <script src="./js/main.js"></script>
+    <script src="./js/verify.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>

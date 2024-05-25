@@ -1,0 +1,219 @@
+section.log-in .container {
+  height: 100%;
+  display: flex;
+  padding-top: 4rem;
+  padding-bottom: 1.33rem;
+}
+section.log-in .container .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 33.33rem;
+}
+section.log-in .container .content .form {
+  display: flex;
+  flex-direction: column;
+  height: 16rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  width: fit-content;
+}
+section.log-in .container .content .form input,
+section.log-in .container .content .form button {
+  width: 26.66rem;
+  height: 4rem;
+  padding: 0 1rem;
+  border-radius: 1.33rem;
+  background-color: var(--black-color-1);
+  font-size: 1.66rem;
+  font-weight: bold;
+  color: var(--box-main-coler);
+  box-shadow: -0.33rem 0.4rem 0 var(--box-second-coler);
+  margin-bottom: 1rem;
+}
+section.log-in .container .content .form .submit {
+  width: 13rem;
+  height: 3.5rem;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  margin: 0 auto;
+  color: var(--gold-color-2);
+  cursor: pointer;
+}
+section.log-in .container .content .form .submit:hover {
+  transform: translate(-0.2rem, 0.36rem);
+  box-shadow: -0.13rem 0.14rem var(--box-second-coler) !important;
+}
+section.log-in .container .content .problem {
+  font-size: 1.33rem;
+  padding-right: 3.33rem;
+  font-weight: 900;
+}
+section.log-in .container .content .problem .forgot-pass {
+  margin-right: 1.33rem;
+  color: var(--text-second-coler);
+  cursor: pointer;
+}
+section.log-in .container .content .problem .no-have {
+  color: var(--text-main-coler);
+}
+section.log-in .container .content .problem .do-have {
+  color: var(--text-second-coler);
+  cursor: pointer;
+}
+
+section.log-in .container .content .foot {
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+section.log-in .container .content .foot > hr {
+  position: relative;
+  height: 0.4rem;
+  width: Calc(100% + 3rem);
+  background-color: var(--text-main-coler);
+  border-radius: 0.5rem;
+  left: 1.5rem;
+  direction: ltr;
+  opacity: 1;
+}
+section.log-in .container .content .foot .title {
+  direction: ltr;
+  font-size: 2.66rem;
+  font-weight: 400;
+  font-family: "Harlow Solid Italic", sans-serif;
+}
+section.log-in .container .content .foot .made-by {
+  display: flex;
+  justify-content: space-between;
+}
+section.log-in .container .content .foot .made-by .one {
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: "Harlow Solid Italic", sans-serif;
+}
+section.log-in .container .content .foot .made-by .one .ring {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem auto;
+  background-color: var(--black-color-1);
+  border-radius: 2.66rem;
+  border: 0.33rem solid var(--box-main-coler);
+  outline: 0.133rem solid var(--gold-color-2);
+  cursor: pointer;
+  overflow: hidden;
+}
+/* Ring Box */
+.devolopers-ring {
+  position: relative;
+}
+.devolopers-ring:hover .ring-box {
+  display: flex !important;
+}
+.devolopers-ring:hover {
+  transition: 0.2s;
+  /* border: 2px solid #aaa !important;
+  border-radius: 1rem;
+  padding: 0 0.5rem; */
+}
+.ring-box {
+  position: absolute;
+  bottom: 9.5rem;
+  right: -1.3rem;
+  width: fit-content;
+  background: #eee;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  margin: 0 1rem;
+}
+.ring-box::after {
+  content: "";
+  position: absolute;
+  border: 1.7rem solid;
+  border-color: #eee transparent transparent !important;
+  bottom: -2.8rem;
+  right: 4rem;
+}
+.ring-box > hr {
+  border: 0.1rem solid #000;
+  opacity: 0.7;
+  border-radius: 2rem;
+  margin: 0.25rem 1rem;
+}
+
+/* Media */
+@media (max-width: 550px) {
+  .section-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    left: 0;
+    transform: none;
+  }
+  section.log-in .container .content {
+    width: 100%;
+  }
+  section.log-in .container .content .form {
+    height: 45%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5rem;
+  }
+  section.log-in .container .content .form input,
+  section.log-in .container .content .form button {
+    width: 80%;
+    height: 5rem;
+    font-size: 2.3rem;
+    padding: 0 1rem;
+    border-radius: 3rem;
+    margin-bottom: 3rem;
+  }
+  section.log-in .container .content .form .submit {
+    width: 45%;
+    height: fit-content !important;
+    padding: 0.7rem;
+    border-radius: 3rem;
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  section.log-in .container .content .problem {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  section.log-in .container .content .foot {
+    height: 30%;
+    padding: 0 2rem;
+  }
+  section.log-in .container .content .foot .title {
+    font-size: 3.5rem;
+  }
+  section.log-in .container .content .foot .made-by {
+    display: flex;
+    justify-content: space-between;
+    width: 115%;
+    transform: translateX(7.5%);
+  }
+  section.log-in .container .content .foot .made-by .one {
+    font-size: 2.5rem;
+  }
+  section.log-in .container .content .foot .made-by .one .ring {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 5rem;
+  }
+  /*  */
+  .devolopers-ring:hover .ring-box {
+    bottom: 19rem !important;
+    right: -4rem;
+  }
+  .ring-box::after {
+    border: 2.5rem solid;
+    bottom: -4.5rem;
+    right: 7.5rem;
+  }
+}

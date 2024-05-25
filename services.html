@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خدماتنا</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/services.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- 
+    ======================
+    -->
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====================================== -->
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="services">
+      <div class="section-title">
+        خدماتنا
+        <i
+          class="fa-regular fa-lightbulb fa-rotate-by s-title-icon"
+          style="--fa-rotate-angle: 25deg"
+        ></i>
+      </div>
+      <img src="images/Backgrounds/logo-back.png" alt="" class="logo-back" />
+      <a href="order_services.html" class="bttn">طلب الخدمة</a>
+      <div class="container">
+        <div class="serv1">
+          <h3>خدمات المباني :</h3>
+          <ul>
+            <li>
+              طلب استخراج بيان بصلاحية الموقع من الناحية التخطيطية والاشتراطات
+              البنائية
+            </li>
+            <li>طلب ترخيص أعمال (بناء جديد) :</li>
+            <ol>
+              <li>
+                إعداد الرسم الهندسي المعماري والإنشائي لقطعة الأرض من خلال مهندس
+                أو مكتب هندسي
+              </li>
+              <li>
+                إعداد تقرير جسات تربة وشهادة سند جوانب حفر من استشاري متخصص في
+                أعمال التربة
+              </li>
+              <li>
+                عمل تفويض أو توكيل رسمي باسم المالك للمهندس أو المكتب الهندسي
+                لمتابعة إجراءات استخراج الترخيص
+              </li>
+              <li>
+                استخراج بيان صلاحية الموقع للبناء من الناحية التخطيطية
+                والإشتراطات البنائية
+              </li>
+              <li>
+                استخراج شهادة صلاحية الأعمال للترخيص معتمدة من المهندس أو المكتب
+                الهندسي
+              </li>
+              <li>
+                إعداد بيان حساب تكاليف الأعمال من خلال المهندس أو المكتب الهندسي
+              </li>
+              <li>
+                تقديم طلب تحديد الموقف التنفيذي، ليتم عمل معاينة للأرض وإثبات
+                حالة الأعمال المنفذة فيها إن وجدت
+              </li>
+              <li>اعتماد الرسومات بختم المهندس أو المكتب الهندسي</li>
+              <li>
+                استخراج وثيقة تأمين من مكتب المجمعة المصرية لتأمين أخطار البناء
+              </li>
+              <li>
+                تقديم المستندات للجهاز أو الحي وسداد رسوم استخراج رخصة البناء
+              </li>
+            </ol>
+
+            <li>طلب ترخيص تشغيل مصانع</li>
+            <li>طلب ترخيص تشغيل محلات</li>
+            <li>طلب ترخيص أعمال (تعلية)</li>
+            <li>طلب ترخيص أعمال (إضافة)</li>
+            <li>طلب ترخيص أعمال بناء (تعديل)</li>
+            <li>طلب ترخيص أعمال بناء (استكمال)</li>
+            <li>طلب ترخيص أعمال بناء (تشطيبات خارجية)</li>
+            <li>طلب تجديد ترخيص بناء</li>
+            <li>طلب ترخيص أعمال بناء (ترميم)</li>
+            <li>طلب ترخيص أعمال بناء (تدعيم)</li>
+            <li>طلب ترخيص هدم منشأة آيلة للسقوط (جزئي – كلي)</li>
+            <li>طلب ترخيص بالهدم للمباني والمنشآت غير الآيلة للسقوط</li>
+            <li>طلب توصيل عداد إنشائي (مياه – كهرباء)</li>
+            <li>تصريح بالحفر لتوصيل المرافق</li>
+            <li>طلب تصريح بتوصيل مرافق للمباني القديمة</li>
+            <li>طلب تصريح حفر بتوصيل مرافق للمباني الجديدة</li>
+            <li>
+              طلب تصريح بتوصيل مرافق دائمة (كهرباء – مياه – غاز – صرف صحي)
+            </li>
+            <li>طلب الحصول على رخصة تركيب مصعد في مبنى جديد</li>
+            <li>طلب الحصول على رخصة تشغيل مصعد</li>
+            <li>طلب إنشاء اتحاد شاغلين</li>
+            <li>طلب رخصة إقامة وتشغيل محطة تقوية محمول</li>
+            <li>طلب شهادة بإتمام أعمال الترميم أو الهدم (كلي / جزئي)</li>
+            <li>طلب نقل ملكية ترخيص البنا</li>
+            <li>معاينة عقار آيل للسقوط</li>
+            <li>طلب استرداد تأمين نقل مخلفات المباني</li>
+          </ul>
+        </div>
+        <div class="serv2">
+          <h3>خدمات الإعلانات – الإشغالات :</h3>
+          <ul>
+            <li>طلب الترخيص بإعلان</li>
+            <li>الترخيص الجديد أو تجديد الترخيص بإشغال طريق (خاص بالمحلات)</li>
+            <li>
+              طلب الحصول على ترخيص أو تجديد (بروز – إعلان – تاندة – فاترينة –
+              عربة)
+            </li>
+            <li>فرش مناسبات موسمية للمحلات المرخصة</li>
+            <li>طلب نقل رخصة إشغال طريق في حالة التنازل عن المحل</li>
+            <li>طلب استرداد مضبوطات إشغالات الطريق العام</li>
+            <li>
+              طلب استخراج بيان يفيد سداد مخالفات إشغال طريق (خاص بالمحلات)
+            </li>
+            <li>طلب عداد مؤقت لكشك</li>
+          </ul>
+        </div>
+        <div class="serv3">
+          <h3>خدمات المحلات :</h3>
+          <ul>
+            <li>طلب الترخيص بفتح محل تجاري أو صناعي</li>
+            <li>طلب تجديد رخصة تشغيل محل صناعي أو تجاري</li>
+            <li>طلب ترخيص بفتح محل عام</li>
+            <li>طلب تعديل ترخيص محل تجاري أو صناعي</li>
+            <li>طلب تعديل ترخيص محل عام</li>
+            <li>طلب نقل رخصة محل تجاري أو صناعي أو عام في حالة التنازل</li>
+            <li>طلب نقل رخصة محل تجاري أو صناعي أو عام لوفاة المرخص له</li>
+            <li>
+              طلب تعديل رخصة بإضافة أو إخراج شريك أو شركاء للمحلات التجارية أو
+              الصناعية أو الملاهي
+            </li>
+            <li>طلب استخراج بدل تالف/فاقد لرخصة محل تجاري أو صناعي أو عام</li>
+          </ul>
+        </div>
+        <div class="plus">
+          <h3>ما هي مزايا شركة Phoenix House للتسويق العقاري :</h3>
+          <ul>
+            <li>
+              الخبرة والسمعة: حيث نمتاز بالسمعة الطيبة والخبرة العالية ولدينا
+              شبكة عملاء واسعة ومعرفة قوية بالسوق المحلي
+            </li>
+            <li>
+              التخصص والتنوع: تحقق فينيكس هاوس أنواع عديدة من العقارات، مثل
+              السكنية أو التجارية وتقدم خدمات متنوعة في مجال التسويق العقاري
+            </li>
+            <li>
+              الابتكار والتكنولوجيا: يستخدم موقع فينيكس هاوس التقنيات الحديثة في
+              تسويق العقارات ، مثل الوسائط المتعددة والجولات الافتراضية والتسويق
+              الرقمي، لأنها أكثر فاعلية في الوصول إلى الجمهور المستهدف وتسويق
+              العقارات بشكل أفضل
+            </li>
+            <li>
+              الشبكة والعلاقات: تتمتع الشركة بشبكة قوية من المطورين والمستثمرين
+              ووسطاء العقارات وتقوم بتوفير فرص تسويق متميزة وخيارات واسعة
+              للعملاء
+            </li>
+            <li>
+              خدمة العملاء: نقدم خدمة العملاء ودعمهم وتلبية احتياجات العملاء
+              وتقديم خدمة شخصية ومهنية عالية حيث تقدم فينيكس هاوس قائمة شاملة
+              تضم عقارات معروضة للبيع بمختلف المواصفات والمستويات
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Font Awesome JS file -->
+    <script src="./js/main.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>

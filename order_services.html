@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>طلب خدمة</title>
+    <!-- External JS files -->
+    <script src="./files/bootstrap/bootstrap.min.js"></script>
+    <script src="./files/axios/axios.min.js"></script>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="files/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/order_services.css" />
+    <!-- Font Awesome Library v6-->
+    <link rel="stylesheet" href="./files/font_awesome/all.min.css" />
+    <!-- kufi Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Loader Code -->
+    <div class="loader" id="loader">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- Alert -->
+    <div id="success-alert" class="fade show"></div>
+    <!-- 
+    ======================
+    -->
+    <!-- Rating Modal-->
+    <div
+      class="modal fade"
+      id="rating-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">تأكيد إرسال التقييم</h5>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center">
+              <h1 id="rating-num"></h1>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              id="rating-submit-btn"
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmRating();"
+            >
+              إرسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ====================================== -->
+    <!-- Start NavBar -->
+    <header id="main-navbar"></header>
+    <!-- ============= End NavBar ============= -->
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logout-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+            <h5 class="modal-title">هل أنت متأكد من تسجيل الخروج</h5>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              غلق
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="confirmlogoutClicked();"
+            >
+              تأكيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="services">
+      <div class="section-title">
+        خدماتنا
+        <i
+          class="fa-regular fa-lightbulb fa-rotate-by s-title-icon"
+          style="--fa-rotate-angle: 25deg"
+        ></i>
+      </div>
+      <img src="images/Backgrounds/logo-back.png" alt="" class="logo-back" />
+      <span class="bttn" onclick="sendChickedInputs()">مراسلة</span>
+      <div class="container">
+        <div class="serv1" id="serv1">
+          <h3>خدمات المباني :</h3>
+          <form>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-01" />
+              </div>
+              <label for="1">
+                طلب استخراج بيان بصلاحية الموقع من الناحية التخطيطية والاشتراطات
+                البنائية
+              </label>
+            </div>
+
+            <h4>طلب ترخيص أعمال (بناء جديد) :</h4>
+
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-02" />
+              </div>
+              <label for="2">
+                إعداد الرسم الهندسي المعماري والإنشائي لقطعة الأرض من خلال مهندس
+                أو مكتب هندسي
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-03" />
+              </div>
+              <label for="3">
+                إعداد تقرير جسات تربة وشهادة سند جوانب حفر من استشاري متخصص في
+                أعمال التربة
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-04" />
+              </div>
+              <label for="4">
+                عمل تفويض أو توكيل رسمي باسم المالك للمهندس أو المكتب الهندسي
+                لمتابعة إجراءات استخراج الترخيص
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-05" />
+              </div>
+              <label for="5">
+                استخراج بيان صلاحية الموقع للبناء من الناحية التخطيطية
+                والإشتراطات البنائية
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-06" />
+              </div>
+              <label for="6">
+                استخراج شهادة صلاحية الأعمال للترخيص معتمدة من المهندس أو المكتب
+                الهندسي
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-07" />
+              </div>
+              <label for="7">
+                إعداد بيان حساب تكاليف الأعمال من خلال المهندس أو المكتب الهندسي
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-08" />
+              </div>
+              <label for="8">
+                تقديم طلب تحديد الموقف التنفيذي، ليتم عمل معاينة للأرض وإثبات
+                حالة الأعمال المنفذة فيها إن وجدت
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-09" />
+              </div>
+              <label for="9"
+                >اعتماد الرسومات بختم المهندس أو المكتب الهندسي</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-10" />
+              </div>
+              <label for="10">
+                استخراج وثيقة تأمين من مكتب المجمعة المصرية لتأمين أخطار البناء
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-11" />
+              </div>
+              <label for="11">
+                تقديم المستندات للجهاز أو الحي وسداد رسوم استخراج رخصة البناء
+              </label>
+            </div>
+
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-12" />
+              </div>
+              <label for="12">طلب ترخيص تشغيل مصانع</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-13" />
+              </div>
+              <label for="13">طلب ترخيص تشغيل محلات</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-14" />
+              </div>
+              <label for="14">طلب ترخيص أعمال (تعلية)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-15" />
+              </div>
+              <label for="15">طلب ترخيص أعمال (إضافة)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-16" />
+              </div>
+              <label for="16">طلب ترخيص أعمال بناء (تعديل)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-17" />
+              </div>
+              <label for="17">طلب ترخيص أعمال بناء (استكمال)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-18" />
+              </div>
+              <label for="18">طلب ترخيص أعمال بناء (تشطيبات خارجية)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-19" />
+              </div>
+              <label for="19">طلب تجديد ترخيص بناء</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-20" />
+              </div>
+              <label for="20">طلب ترخيص أعمال بناء (ترميم)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-21" />
+              </div>
+              <label for="21">طلب ترخيص أعمال بناء (تدعيم)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-22" />
+              </div>
+              <label for="22"
+                >طلب ترخيص هدم منشأة آيلة للسقوط (جزئي – كلي)</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-23" />
+              </div>
+              <label for="23"
+                >طلب ترخيص بالهدم للمباني والمنشآت غير الآيلة للسقوط</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-36" />
+              </div>
+              <label for="36">طلب توصيل عداد إنشائي (مياه – كهرباء)</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-24" />
+              </div>
+              <label for="24">تصريح بالحفر لتوصيل المرافق</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-25" />
+              </div>
+              <label for="25">طلب تصريح بتوصيل مرافق للمباني القديمة</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-26" />
+              </div>
+              <label for="26">طلب تصريح حفر بتوصيل مرافق للمباني الجديدة</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-27" />
+              </div>
+              <label for="27">
+                طلب تصريح بتوصيل مرافق دائمة (كهرباء – مياه – غاز – صرف صحي)
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-28" />
+              </div>
+              <label for="28"
+                >طلب الحصول على رخصة تركيب مصعد في مبنى جديد</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-29" />
+              </div>
+              <label for="29">طلب الحصول على رخصة تشغيل مصعد</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-30" />
+              </div>
+              <label for="30">طلب إنشاء اتحاد شاغلين</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-31" />
+              </div>
+              <label for="31">طلب رخصة إقامة وتشغيل محطة تقوية محمول</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-32" />
+              </div>
+              <label for="32"
+                >طلب شهادة بإتمام أعمال الترميم أو الهدم (كلي / جزئي)</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-33" />
+              </div>
+              <label for="33">طلب نقل ملكية ترخيص البنا</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-34" />
+              </div>
+              <label for="34">معاينة عقار آيل للسقوط</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-35" />
+              </div>
+              <label for="35">طلب استرداد تأمين نقل مخلفات المباني</label>
+            </div>
+          </form>
+        </div>
+        <div class="serv2" id="serv2">
+          <h3>خدمات الإعلانات – الإشغالات :</h3>
+          <form>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-37" />
+              </div>
+              <label for="37">طلب الترخيص بإعلان</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-38" />
+              </div>
+              <label for="38"
+                >الترخيص الجديد أو تجديد الترخيص بإشغال طريق (خاص
+                بالمحلات)</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-39" />
+              </div>
+              <label for="39">
+                طلب الحصول على ترخيص أو تجديد (بروز – إعلان – تاندة – فاترينة –
+                عربة)
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-40" />
+              </div>
+              <label for="40">فرش مناسبات موسمية للمحلات المرخصة</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-41" />
+              </div>
+              <label for="41"
+                >طلب نقل رخصة إشغال طريق في حالة التنازل عن المحل</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-42" />
+              </div>
+              <label for="42">طلب استرداد مضبوطات إشغالات الطريق العام</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-43" />
+              </div>
+              <label for="43">
+                طلب استخراج بيان يفيد سداد مخالفات إشغال طريق (خاص بالمحلات)
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-44" />
+              </div>
+              <label for="44">طلب عداد مؤقت لكشك</label>
+            </div>
+          </form>
+        </div>
+        <div class="serv3" id="serv3">
+          <h3>خدمات المحلات :</h3>
+          <form>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-45" />
+              </div>
+              <label for="45">طلب الترخيص بفتح محل تجاري أو صناعي</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-46" />
+              </div>
+              <label for="46">طلب تجديد رخصة تشغيل محل صناعي أو تجاري</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-47" />
+              </div>
+              <label for="47">طلب ترخيص بفتح محل عام</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-48" />
+              </div>
+              <label for="48">طلب تعديل ترخيص محل تجاري أو صناعي</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-49" />
+              </div>
+              <label for="49">طلب تعديل ترخيص محل عام</label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-50" />
+              </div>
+              <label for="50"
+                >طلب نقل رخصة محل تجاري أو صناعي أو عام في حالة التنازل</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-51" />
+              </div>
+              <label for="51"
+                >طلب نقل رخصة محل تجاري أو صناعي أو عام لوفاة المرخص له</label
+              >
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-52" />
+              </div>
+              <label for="52">
+                طلب تعديل رخصة بإضافة أو إخراج شريك أو شركاء للمحلات التجارية أو
+                الصناعية أو الملاهي
+              </label>
+            </div>
+            <div class="serv">
+              <div>
+                <input type="checkbox" id="serv-53" />
+              </div>
+              <label for="53"
+                >طلب استخراج بدل تالف/فاقد لرخصة محل تجاري أو صناعي أو
+                عام</label
+              >
+            </div>
+          </form>
+        </div>
+        <div class="plus">
+          <h3>ما هي مزايا شركة Phoenix House للتسويق العقاري :</h3>
+          <ul>
+            <li>
+              الخبرة والسمعة: حيث نمتاز بالسمعة الطيبة والخبرة العالية ولدينا
+              شبكة عملاء واسعة ومعرفة قوية بالسوق المحلي
+            </li>
+            <li>
+              التخصص والتنوع: تحقق فينيكس هاوس أنواع عديدة من العقارات، مثل
+              السكنية أو التجارية وتقدم خدمات متنوعة في مجال التسويق العقاري
+            </li>
+            <li>
+              الابتكار والتكنولوجيا: يستخدم موقع فينيكس هاوس التقنيات الحديثة في
+              تسويق العقارات ، مثل الوسائط المتعددة والجولات الافتراضية والتسويق
+              الرقمي، لأنها أكثر فاعلية في الوصول إلى الجمهور المستهدف وتسويق
+              العقارات بشكل أفضل
+            </li>
+            <li>
+              الشبكة والعلاقات: تتمتع الشركة بشبكة قوية من المطورين والمستثمرين
+              ووسطاء العقارات وتقوم بتوفير فرص تسويق متميزة وخيارات واسعة
+              للعملاء
+            </li>
+            <li>
+              خدمة العملاء: نقدم خدمة العملاء ودعمهم وتلبية احتياجات العملاء
+              وتقديم خدمة شخصية ومهنية عالية حيث تقدم فينيكس هاوس قائمة شاملة
+              تضم عقارات معروضة للبيع بمختلف المواصفات والمستويات
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- Font Awesome JS file -->
+    <script src="./js/main.js"></script>
+    <script src="./js/orderServices.js"></script>
+    <!-- Font Awesome JS file -->
+    <script src="./files/font_awesome/all.min.js"></script>
+  </body>
+</html>
